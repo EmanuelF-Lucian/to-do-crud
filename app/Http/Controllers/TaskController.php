@@ -7,6 +7,7 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class TaskController extends Controller
@@ -52,6 +53,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+        Gate::authorize('manageTask', $task);
+
         return Inertia::render('tasks/Show', [
             'task' => $task,
         ]);
@@ -62,6 +65,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        Gate::authorize('manageTask', $task);
+
         return Inertia::render('tasks/Edit', [
             'task' => $task,
             'options' => TaskStatus::toSelectArrays(),
@@ -73,6 +78,8 @@ class TaskController extends Controller
      */
     public function update(TaskRequest $request, Task $task)
     {
+        Gate::authorize('manageTask', $task);
+
         $validated = $request->validated();
 
         $task->update($validated);
@@ -85,6 +92,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        Gate::authorize('manageTask', $task);
+
         $task->delete();
         return redirect()->route('tasks.index');
     }

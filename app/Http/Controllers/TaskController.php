@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Auth::user()->tasks()->orderBy('created_at', 'desc')->get();
+        $tasks = Auth::user()->tasks()->latest()->get();
 
         return Inertia::render('tasks/Index', [
             'tasks' => $tasks,

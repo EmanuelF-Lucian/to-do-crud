@@ -29,7 +29,7 @@ class TaskRequest extends FormRequest
             'title' => ['required', 'string', 'max:255', 'min:5'],
             'description' => ['nullable', 'string', 'max:1000'],
             'due_date' => ['nullable', 'date'],
-            'status' => ['required', 'string', Rule::in(collect(TaskStatus::cases())->map(fn($case) => $case->value)->toArray())],
+            'status' => ['required', 'string', Rule::in(collect(TaskStatus::cases())->map(fn ($case) => $case->value)->toArray())],
         ];
     }
 }

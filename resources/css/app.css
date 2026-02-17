@@ -170,3 +170,10 @@
         @apply bg-background text-foreground;
     }
 }
+/* 
+[data-sonner-toaster] {
+    position: fixed !important;
+    z-index: 9999 !important;
+    top: 24px !important;
+    right: 24px !important;
+} */

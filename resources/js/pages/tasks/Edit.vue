@@ -33,13 +33,6 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '#',
     },
 ];
-
-// const form = useForm({
-//     title: props.task.title,
-//     description: props.task.description,
-//     due_date: props.task.due_date,
-//     status: props.task.status,
-// });
 </script>
 
 <template>
@@ -74,6 +67,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         type="text"
                         placeholder="Task Description"
                     />
+                    <InputError :message="errors.description" />
                 </div>
                 <div class="space-y-2">
                     <Label for="due_date">Due Date</Label>
@@ -84,6 +78,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         type="date"
                         placeholder="Task Due Date"
                     />
+                    <InputError :message="errors.due_date" />
                 </div>
                 <div class="space-y-2">
                     <Label for="status">Status</Label>
@@ -101,6 +96,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             {{ option.label }}
                         </option>
                     </select>
+                    <InputError :message="errors.status" />
                 </div>
                 <div class="mt-8 space-x-4 justify-self-end">
                     <Link :href="tasks.index().url">

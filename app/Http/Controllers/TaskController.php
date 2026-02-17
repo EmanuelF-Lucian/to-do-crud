@@ -47,6 +47,7 @@ class TaskController extends Controller
         Auth::user()->tasks()->create($validated);
 
         Inertia::flash('success', 'Task created successfully.');
+
         return redirect()->route('tasks.index');
     }
 
@@ -86,6 +87,7 @@ class TaskController extends Controller
 
         $task->update($validated);
         Inertia::flash('success', 'Task updated successfully.');
+
         return redirect()->route('tasks.index');
     }
 
@@ -99,6 +101,7 @@ class TaskController extends Controller
         $task->delete();
 
         Inertia::flash('success', 'Task deleted successfully.');
+
         return redirect()->route('tasks.index');
     }
 }

@@ -26,4 +26,13 @@ enum TaskStatus: string
             'label' => $case->label(),
         ])->toArray();
     }
+
+    public function color(): string
+    {
+        return match ($this) {
+            self::Pending => 'bg-yellow-200 text-yellow-900',
+            self::InProgress => 'bg-blue-200 text-blue-900',
+            self::Completed => 'bg-green-200 text-green-900',
+        };
+    }
 }

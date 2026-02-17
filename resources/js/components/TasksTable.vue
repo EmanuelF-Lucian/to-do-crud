@@ -55,7 +55,11 @@ const deleteTask = (id: number) => {
                     </Link>
                 </TableCell>
 
-                <TableCell>{{ task.status_label }}</TableCell>
+                <TableCell>
+                    <span :class="['rounded-full px-1', task.status_color]">
+                        {{ task.status_label }}
+                    </span></TableCell
+                >
                 <TableCell>{{ task.due_date }}</TableCell>
                 <TableCell class="flex items-center justify-end text-right">
                     <Link :href="`/tasks/${task.id}/edit`" class="mr-2">

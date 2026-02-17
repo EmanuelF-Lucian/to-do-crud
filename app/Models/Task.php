@@ -27,11 +27,16 @@ class Task extends Model
         'status' => TaskStatus::class,
     ];
 
-    protected $appends = ['status_label'];
+    protected $appends = ['status_label', 'status_color'];
 
     public function getStatusLabelAttribute(): string
     {
         return $this->status?->label() ?? '';
+    }
+
+    public function getStatusColorAttribute(): string
+    {
+        return $this->status?->color() ?? '';
     }
 
     public function user(): BelongsTo

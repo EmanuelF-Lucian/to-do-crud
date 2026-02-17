@@ -63,7 +63,6 @@ defineProps<{
                     <Textarea
                         id="description"
                         name="description"
-                        type="text"
                         placeholder="Task Description"
                     />
                     <InputError :message="errors.description" />
@@ -85,7 +84,7 @@ defineProps<{
                         name="status"
                         class="w-full rounded-md border border-sidebar-border/70 bg-background px-3 py-2 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-sidebar-border"
                     >
-                        <option :value="null">Select a status...</option>
+                        <option value="">Select a status...</option>
                         <option
                             v-for="option in options"
                             :key="option.value"

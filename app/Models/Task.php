@@ -31,7 +31,7 @@ class Task extends Model
 
     public function getStatusLabelAttribute(): string
     {
-        return $this->status->label();
+        return $this->status?->label() ?? '';
     }
 
     public function user(): BelongsTo

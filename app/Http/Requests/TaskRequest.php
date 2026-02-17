@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\Enums\TaskStatus;
@@ -24,9 +26,9 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255', 'min:5'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'due_date' => ['required', 'date'],
+            'due_date' => ['nullable', 'date'],
             'status' => ['required', 'string', Rule::in(collect(TaskStatus::cases())->map(fn($case) => $case->value)->toArray())],
         ];
     }

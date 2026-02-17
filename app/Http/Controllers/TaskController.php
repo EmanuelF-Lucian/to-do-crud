@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Enums\TaskStatus;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -15,7 +16,7 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         $tasks = Auth::user()->tasks()->latest()->get();
 
@@ -51,7 +52,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show(Task $task): \Inertia\Response
     {
         Gate::authorize('manageTask', $task);
 
@@ -63,7 +64,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit(Task $task): \Inertia\Response
     {
         Gate::authorize('manageTask', $task);
 
@@ -76,7 +77,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TaskRequest $request, Task $task)
+    public function update(TaskRequest $request, Task $task): \Illuminate\Http\RedirectResponse
     {
         Gate::authorize('manageTask', $task);
 
@@ -90,11 +91,12 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy(Task $task): \Illuminate\Http\RedirectResponse
     {
         Gate::authorize('manageTask', $task);
 
         $task->delete();
+
         return redirect()->route('tasks.index');
     }
 }

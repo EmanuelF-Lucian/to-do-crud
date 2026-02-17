@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum TaskStatus: string
@@ -19,7 +21,7 @@ enum TaskStatus: string
 
     public static function toSelectArrays(): array
     {
-        return collect(self::cases())->map(fn($case) => [
+        return collect(self::cases())->map(fn ($case) => [
             'value' => $case->value,
             'label' => $case->label(),
         ])->toArray();

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\TaskStatus;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model
 {
@@ -25,9 +27,14 @@ class Task extends Model
         'status' => TaskStatus::class,
     ];
 
+    protected $appends = ['status_label'];
 
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

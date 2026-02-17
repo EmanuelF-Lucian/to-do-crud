@@ -31,7 +31,7 @@ defineProps<{
             <TableRow v-for="task in tasks" :key="task.id">
                 <TableCell>{{ task.title }}</TableCell>
 
-                <TableCell>{{ task.status }}</TableCell>
+                <TableCell>{{ task.status_label }}</TableCell>
                 <TableCell>{{ task.due_date }}</TableCell>
                 <TableCell
                     class="flex items-center justify-end gap-4 text-right"

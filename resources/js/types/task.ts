@@ -7,6 +7,7 @@ export interface Task {
     title: string;
     description: string;
     due_date: string; // ISO date string
+    status_label: string;
     status: TaskStatus;
     user_id: number;
     created_at: string; // ISO date string

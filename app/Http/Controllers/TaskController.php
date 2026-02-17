@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Enums\TaskStatus;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -16,12 +17,19 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Inertia\Response
+    public function index(Request $request): \Inertia\Response
     {
-        $tasks = Auth::user()->tasks()->latest()->paginate(15);
+
+        $tasks = Auth::user()->tasks()
+            ->search($request->search)
+            ->status($request->status)
+            ->latest()
+            ->paginate(10);
 
         return Inertia::render('tasks/Index', [
             'tasks' => $tasks,
+            'filters' => $request->only(['search', 'status']),
+            'options' => TaskStatus::toSelectArrays(),
         ]);
     }
 

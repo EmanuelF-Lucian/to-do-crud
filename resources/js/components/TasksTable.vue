@@ -9,7 +9,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-import { create, show } from '../routes/tasks';
+import { create, edit, show } from '../routes/tasks';
 import type { Task } from '../types/task';
 import DeleteAlertDialog from './DeleteAlertDialog.vue';
 
@@ -39,9 +39,9 @@ const deleteTask = (id: number) => {
                     colspan="4"
                     class="py-8 text-center text-lg text-muted-foreground"
                 >
-                    No tasks yet.
+                    No tasks .
                     <Link :href="create()" class="underline">
-                        Create your first task
+                        You can create one here.
                     </Link>
                 </TableCell>
             </TableRow>
@@ -62,12 +62,12 @@ const deleteTask = (id: number) => {
                 >
                 <TableCell>{{ task.due_date }}</TableCell>
                 <TableCell class="flex items-center justify-end text-right">
-                    <Link :href="`/tasks/${task.id}/edit`" class="mr-2">
-                        <Edit class="w-4 text-green-600" />
+                    <Link :href="edit(task.id)" class="mr-2">
+                        <Edit class="w-4 text-chart-2" />
                     </Link>
                     <DeleteAlertDialog @delete="deleteTask(task.id)">
                         <template #trigger>
-                            <Trash2 class="w-4 text-red-600" />
+                            <Trash2 class="w-4 text-destructive" />
                         </template>
                     </DeleteAlertDialog>
                 </TableCell>

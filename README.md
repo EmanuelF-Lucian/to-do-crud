@@ -1,74 +1,48 @@
 # Laravel + Vue 3 Learning Project
 
-A minimalist full-stack web application built to understand how Laravel, Vue 3, and Inertia.js work together seamlessly.
+A learning playground to understand how Laravel, Vue 3, and Inertia.js work together. **UI is intentionally minimal** - the focus is on backend/frontend integration, not design.
 
-## 📚 Project Purpose
+## What This Is
 
-This project is a **learning exercise** designed to explore the integration of three powerful technologies:
-
-- **Laravel** - PHP backend framework for building robust server-side logic
-- **Vue 3** - Modern JavaScript framework for creating interactive user interfaces
-- **Inertia.js** - Adapter that bridges Laravel and Vue 3, eliminating the need for a separate API
-
-The UI is intentionally kept **minimal and functional**, focusing on core concepts rather than aesthetics. The goal is to understand how these technologies communicate and work as a cohesive unit.
+- ✍️ A personal learning project for exploring Laravel + Vue 3 integration
+- 🎯 Simplified task management app (create, edit, delete, filter)
+- 💪 Fully functional but not production-ready
+- 📚 Example of real patterns: Inertia Form component, type-safe routes, server validation
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Laravel 12 (Official Vue Starter Kit)
-- **Frontend**: Vue 3 with TypeScript
-- **Bridge**: Inertia.js
-- **Build Tool**: Vite
-- **Authentication**: Laravel Fortify (built-in with starter kit)
-- **UI Components**: shadcn-vue
-- **Styling**: Tailwind CSS
+- **Backend**: Laravel 12
+- **Frontend**: Vue 3 + TypeScript
+- **Bridge**: Inertia.js v2 (no API, just server-rendered)
+- **Routes**: Wayfinder (auto-generated TS action files)
+- **UI**: Shadcn-ui + Lucide icons
+- **Tables**: TanStack Vue Table
+- **Styling**: Tailwind CSS v4
+- **Builds**: Vite
+- **Auth**: Laravel Fortify (built-in)
 
-## 📋 Project Status
+### ✅ Features
 
-**Current Stage**: Early development - Basic CRUD operations
+- User auth (register, login, logout, 2FA)
+- Task CRUD with server-side validation
+- Search & filtering with router
+- Authorization policies
+- Type-safe form handling with Inertia
 
-### Completed Features
+## 💡 What I Learned
 
-- ✅ User authentication (register, login, logout)
-- ✅ Task creation (store)
-- ✅ Task listing with ordering
-- ✅ Task editing with form population
-- ✅ Data validation on request layer
-- ✅ Form state management with Inertia useForm()
+- **Inertia Form component** - How slots expose form state (`errors`, `processing`)
+- **Wayfinder** - Auto-generated type-safe route helpers from Laravel
+- **Server-side rendering** - Rendering Vue on backend, sending HTML to client
+- **Form validation** - Server validation → reactive error display in Vue
+- **Authorization** - Policies to check permissions before mutations
+- **Accessible UI** - Building with Shadcn-UI primitives instead of reinventing
 
-### In Progress / Planned
+## Notes
 
-- 🔄 Form Vaildation
-- 🔄 Task filtering and search
-- 🔄 Policy authorization
-- 🔄 Advanced validation rules
-- 🔄 Error handling and notifications
-
-## 💡 Learning Focus
-
-This project demonstrates:
-
-1. **Server-Rendered Components**: How Inertia.js renders Vue components on the server
-2. **Reactive Form Handling**: Managing form state and validation in Vue
-3. **Type Safety**: Using TypeScript across frontend and generating types from backend
-4. **Routing**: Laravel routes mapped to Vue page components
-5. **Authentication**: Protecting routes and managing user sessions
-6. **Validation**: Server-side validation in Laravel Form Requests
-7. **Data Flow**: How data flows from database → controller → Vue component
-
-## 🎯 Key Concepts Explored
-
-- **Inertia.js Integration**: Monolithic application without API separation
-- **Reactive Data Binding**: Vue 3's composition API with `useForm()`
-- **Database Queries**: Eloquent ORM and query optimization
-- **Middleware**: Route protection and authentication checks
-- **Type Definitions**: PHP properties reflected as TypeScript types
-
-## 📝 Notes
-
-- This is **not a production-ready** application
-- Security features are minimal (authorization policies incomplete)
-- UI design is intentionally basic - focus is on functionality
-- Each completed feature builds upon previous learning
+- This is done. No further changes planned.
+- Not meant for production - it's a learning exercise.
+- The code can definitely be improved, but it works and teaches the concepts.
 
 ## 🔗 Resources
 
